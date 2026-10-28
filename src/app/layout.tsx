@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
+
 import "./globals.css";
-import { cn } from "@/lib/utils";
 import { Navbar } from "@/components/layout/navbar/Navbar";
-import { ThemeProvider } from "@/components/theme/theme-provider";
 
 const poppins = Poppins({
     subsets: ["latin"],
@@ -13,7 +12,12 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-    title: "Property Pulse | Find Your Perfect Property",
+    title: {
+        default: "Property Pulse | Find Your Perfect Property",
+        template: "%s | Property Pulse",
+    },
+    description:
+        "Discover homes, apartments, and properties for sale with Property Pulse. Find your ideal property with confidence.",
     keywords: [
         "Property Pulse",
         "real estate",
@@ -21,37 +25,24 @@ export const metadata: Metadata = {
         "homes for sale",
         "apartments for sale",
         "buy property",
-        "sell property",
-        "real estate marketplace",
     ],
-    description:
-        "Discover, buy, sell, and explore properties with Property Pulse. Find your ideal home, apartment, or investment property with confidence. ",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+type RootLayoutProps = Readonly<{
+    children: React.ReactNode;
+}>;
+
+export default function RootLayout({ children }: RootLayoutProps) {
     return (
-        <html
-            lang="en"
-            className={cn(
-                "h-full",
-                "antialiased",
-                poppins.className,
-                "font-sans",
-            )}
-            suppressHydrationWarning
-        >
-            <body className="min-h-full flex flex-col">
-                <ThemeProvider
-                    attribute="class"
-                    defaultTheme="system"
-                    enableSystem
-                    disableTransitionOnChange
-                >
-                    <header>
-                        <Navbar />
-                    </header>
-                    <main>{children}</main>
-                </ThemeProvider>
+        <html lang="en" suppressHydrationWarning>
+            <body
+                className={`${poppins.className} min-h-screen bg-background text-foreground antialiased`}
+            >
+                <header>
+                    <Navbar />
+                </header>
+
+                <main className="flex-1">{children}</main>
             </body>
         </html>
     );
