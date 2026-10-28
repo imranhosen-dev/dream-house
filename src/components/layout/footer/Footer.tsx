@@ -1,6 +1,11 @@
-
 import Link from "next/link";
-import { Home,  ArrowUpRight, GitBranchPlus, FaceAngry, Link2Icon } from "lucide-react";
+import {
+    Home,
+    ArrowUpRight,
+    GitBranchPlus,
+    FaceAngry,
+    Link2Icon,
+} from "lucide-react";
 
 const footerLinks = {
     Explore: [
@@ -13,7 +18,7 @@ const footerLinks = {
         { name: "Create Account", href: "/register" },
     ],
 };
-
+const newData = new Date().getFullYear();
 export const Footer = () => {
     return (
         <footer className="border-t bg-muted/30">
@@ -31,13 +36,14 @@ export const Footer = () => {
                             </span>
 
                             <span className="text-xl font-bold tracking-tight">
-                                Property <span className="text-primary">Pulse</span>
+                                Property{" "}
+                                <span className="text-primary">Pulse</span>
                             </span>
                         </Link>
 
                         <p className="max-w-xs text-sm leading-6 text-muted-foreground">
-                            Find your perfect rental property and make your
-                            next move with confidence.
+                            Find your perfect rental property and make your next
+                            move with confidence.
                         </p>
 
                         <div className="flex items-center gap-3 pt-1">
@@ -115,7 +121,7 @@ export const Footer = () => {
                 {/* Bottom bar */}
                 <div className="flex flex-col gap-3 border-t py-5 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
                     <p className="text-xs text-muted-foreground sm:text-sm">
-                        © {new Date().getFullYear()} Property Pulse. All rights reserved.
+                        © {newData} Property Pulse. All rights reserved.
                     </p>
 
                     <p className="text-xs text-muted-foreground sm:text-sm">
